@@ -1,0 +1,112 @@
+<h1 class="text-center mb-4 bg-dark-subtle p-2 text-dark fw-bolder">View Rental Details</h1>
+
+<div class="container">
+    <table class="table border">
+        <tr class="border text-center bg-black text-white">
+            <th>Count</th>
+            <th>Rental ID</th>
+            <th>Customer Name</th>
+            <th>Item Name</th>
+            <th>Rental Date</th>
+            <th>Return Date</th>
+            <th>Due Date</th>
+            <th>Fine</th>
+            <th>Total Cost</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr class="border text-center" *ngFor="let rental of rentalList; index as i">
+            <td>{{i+1}}</td>
+            <td>{{"20"+rental.id}}</td>
+            <td>{{rental.custName}}</td>
+            <td>{{rental.itemName}}</td>
+            <td>{{rental.rentalDate}}</td>
+            <td>{{rental.returnDate}}</td>
+            <td>{{rental.dueDate}}</td>
+            <td>{{rental.fine}}</td>
+            <td>{{rental.totalCost}}</td>
+            <td><button class="btn btn-danger" (click)="deleteRental(rental)"><i class="bi bi-trash"></i></button>
+            </td>
+            <td><button class="btn btn-primary" (click)="updateRental(rental)" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i></button></td>
+            <td><button class="btn btn-dark" (click)="showRental(rental)" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"><i class="bi bi-book"></i></button></td>
+
+        </tr>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Rental</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">ID:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.id"
+                        disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Customer Name:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.custName">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Item Name:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.itemName">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Rental Date</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.rentalDate">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Return Date</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.returnDate">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Due Date</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.dueDate">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Fine</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.fine">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Total Cost</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedRental.totalCost">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="saveUpdatedRental()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fw-bolder align-items-center" id="staticBackdropLabel">Bill</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Customer Name : {{selectedRental.custName}}</h6>
+                <h6>Rental Item : {{selectedRental.itemName}}</h6>
+                <h6>Rental Start Date : {{selectedRental.rentalDate}}</h6>
+                <h6>Expected Return Date : {{selectedRental.returnDate}}</h6>
+                <h6>Total Amount : {{selectedRental.totalCost}}</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

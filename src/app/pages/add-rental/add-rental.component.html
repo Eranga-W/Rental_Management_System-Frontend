@@ -1,0 +1,42 @@
+<h1 class="text-center mb-4 bg-dark-subtle p-2 text-dark fw-bolder ">Add Rentals</h1>
+<div class="container m-3">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"></span>
+        <input type="text" class="form-control" placeholder="Customer Name" aria-label="Customer Name"
+            [(ngModel)]="rentalObj.custName" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Item Name" aria-label="Item Name"
+            [(ngModel)]="rentalObj.itemName" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Rental Date" aria-label="Rental Date"
+            [(ngModel)]="rentalObj.rentalDate" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Return Date" aria-label="Return Date"
+            [(ngModel)]="rentalObj.returnDate" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Due Date" aria-label="Due Date"
+            [(ngModel)]="rentalObj.dueDate" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Fine" aria-label="Fine"
+            [(ngModel)]="rentalObj.fine" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Total Cost" aria-label="Total Cost"
+            [(ngModel)]="rentalObj.totalCost" aria-describedby="basic-addon2" required>
+    </div>
+    
+    <div>
+        <button type="button" class="btn btn-success" (click)="addRental()">Add Item</button>
+    </div>
+</div>
