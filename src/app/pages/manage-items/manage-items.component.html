@@ -1,0 +1,71 @@
+<h1 class="text-center mb-4 bg-dark-subtle p-2 text-dark fw-bolder">Manage Items</h1>
+
+<div class="container">
+    <table class="table border">
+        <tr class="border text-center bg-black text-white">
+            <th>Count</th>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Rental Per Day</th>
+            <th>Fine Per Day</th>
+            <th>Availability</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr class="border text-center" *ngFor="let item of itemsList; index as i">
+            <td>{{i+1}}</td>
+            <td>{{"10"+item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.rentalPerDay}}</td>
+            <td>{{item.finePerDay}}</td>
+            <td>{{item.availability}}</td>
+            <td><button class="btn btn-danger" (click)="deleteItem(item)"><i class="bi bi-trash"></i></button>
+            </td>
+            <td><button class="btn btn-primary" (click)="updateItem(item)" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i></button></td>
+        </tr>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">ID:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedItem.id" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedItem.name">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Rental Per Day:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedItem.rentalPerDay">
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Fine Per Day</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="selectedItem.finePerDay">
+                </div>
+                <div class="mb-3">
+                    <div class="input-group mb-3 ">
+                        <select class="form-select" aria-label="Default select example" id="role"
+                            [(ngModel)]="selectedItem.availability" required>
+                            <option value="">Select Availability</option>
+                            <option value="Available">Available</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="saveUpdatedItem()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>

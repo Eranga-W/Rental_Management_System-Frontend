@@ -1,0 +1,30 @@
+<h1 class="text-center mb-4 bg-dark-subtle p-2 text-dark fw-bolder ">Add Items</h1>
+<div class="container m-3">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"></span>
+        <input type="text" class="form-control" placeholder="Name" aria-label="Name"
+            [(ngModel)]="itemObj.name" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Rental Per Day" aria-label="Rental Per Day"
+            [(ngModel)]="itemObj.rentalPerDay" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"></span>
+        <input type="text" class="form-control" placeholder="Fine Per Day" aria-label="Fine Per Day"
+            [(ngModel)]="itemObj.finePerDay" aria-describedby="basic-addon2" required>
+    </div>
+    <div class="input-group mb-3 ">
+        <select class="form-select" aria-label="Default select example" id="availability" [(ngModel)]="itemObj.availability"
+            required>
+            <option value="">Select Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+    </div>
+    <div>
+        <button type="button" class="btn btn-success" (click)="addItems()">Add Item</button>
+    </div>
+
+</div>
